@@ -1,9 +1,3 @@
-<!-- badges: start -->
-[![R-CMD-check](https://github.com/BDSC-tds/SPLIT/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/BDSC-tds/SPLIT/actions/workflows/R-CMD-check.yaml)
-[![DOI](https://img.shields.io/badge/DOI-10.1038%2Fs41592--026--03089--8-brightgreen)](https://doi.org/10.1038/s41592-026-03089-8)
-[![Version](https://img.shields.io/badge/version-0.2.0-blue)](https://github.com/bdsc-tds/SPLIT/releases/tag/v0.2.0)
-<!-- badges: end -->
-
 # SPLIT-py: Spatial Purification of Layered Intracellular Transcripts
 
 **Python implementation note**
