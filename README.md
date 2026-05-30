@@ -79,3 +79,7 @@ cd /mnt/volume2/snowxue/SPLIT_python
   2>&1 | tee /mnt/volume2/snowxue/SPLIT_python/run_outputs/run.log
 ```
 
+
+# References
+
+1. Bilous, M. et al. Resolving sensitivity, specificity and signal contamination in Xenium spatial transcriptomics. Nat Methods https://doi.org/10.1038/s41592-026-03089-8 (2026) doi:10.1038/s41592-026-03089-8.
