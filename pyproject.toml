@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "split-st"
+version = "0.2.3"
+description = "Python/Scanpy implementation of SPLIT spatial transcript purification"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "GPL-3.0-or-later" }
+authors = [
+  { name = "Mariia Bilous", email = "Mariia.Bilous@chuv.ch" }
+]
+dependencies = [
+  "anndata>=0.9",
+  "h5py>=3",
+  "numpy>=1.23",
+  "pandas>=1.5",
+  "pyarrow>=10",
+  "scanpy>=1.9",
+  "scipy>=1.9",
+  "scikit-learn>=1.2"
+]
+
+[project.optional-dependencies]
+rctd = ["rctd-py>=0.3.2"]
+test = ["pytest>=7"]
+
+[tool.setuptools.packages.find]
+include = ["split*"]
