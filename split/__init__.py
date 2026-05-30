@@ -18,6 +18,7 @@ from .postprocess import (
     reconstruct_rctd_from_rctdpy,
     run_post_process_rctd,
 )
+from .pipeline import run_split_rctd_py_pipeline
 from .residuals import build_reassignment_operator, reassign_residual_counts
 from .rctd_py import (
     rctd_py_result_to_rctd_result,
@@ -43,5 +44,6 @@ __all__ = [
     "run_post_process_rctd",
     "run_rctd_py",
     "run_rctd_py_and_split",
+    "run_split_rctd_py_pipeline",
     "split_cells",
 ]

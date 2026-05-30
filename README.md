@@ -79,6 +79,22 @@ cd /mnt/volume2/snowxue/SPLIT_python
   2>&1 | tee /mnt/volume2/snowxue/SPLIT_python/run_outputs/run.log
 ```
 
+The same pipeline can be called from Python:
+
+```python
+import split
+
+result = split.run_split_rctd_py_pipeline(
+    ref_path="/path/to/reference.h5ad",
+    spatial_path="/path/to/cell_feature_matrix.h5",
+    out_dir="/path/to/split_outputs",
+    cell_type_col="Annotation",
+)
+
+purified = result["purified"]
+summary = result["summary"]
+```
+
 
 # References
 
