@@ -13,6 +13,7 @@ def run_split_rctd_py_pipeline(
     cell_type_col: str = "Annotation",
     chunk_size: int = 50_000,
     min_weight: float = 0.01,
+    device: str = "cuda:0",
     log_fn: Optional[Callable[[str], None]] = print,
 ) -> dict[str, Any]:
     """Run rctd-py followed by SPLIT purification from file paths.
@@ -31,6 +32,8 @@ def run_split_rctd_py_pipeline(
         Cell chunk size for SPLIT purification.
     min_weight
         Minimum RCTD weight used during SPLIT post-processing.
+    device
+        Device passed to rctd-py, defaulting to `cuda:0`.
     log_fn
         Optional logger callable. Set to `None` to silence progress messages.
 
@@ -82,6 +85,7 @@ def run_split_rctd_py_pipeline(
         reference_adata=reference,
         cell_type_col=cell_type_col,
         mode="doublet",
+        device=device,
         min_weight=min_weight,
         purify_kwargs={"run_in_chunks": True, "chunk_size": chunk_size},
     )
@@ -110,6 +114,7 @@ def run_split_rctd_py_pipeline(
         "cell_type_col": cell_type_col,
         "chunk_size": chunk_size,
         "min_weight": min_weight,
+        "device": device,
         "spatial_shape_after_intersection": list(spatial.shape),
         "reference_shape_after_intersection": list(reference.shape),
         "n_common_genes": int(len(common_genes)),

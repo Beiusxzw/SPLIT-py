@@ -29,7 +29,8 @@ python scripts/run_split_rctd_py_pipeline.py \
   --ref-path /path/to/reference.h5ad \
   --spatial-path /path/to/cell_feature_matrix.h5 \
   --out-dir /path/to/split_outputs \
-  --cell-type-col Annotation
+  --cell-type-col Annotation \
+  --device cuda:0
 ```
 
 Useful options:
@@ -40,6 +41,7 @@ Useful options:
 - `--cell-type-col`: reference `.obs` column used as deconvolution cell types, default `Annotation`
 - `--chunk-size`: SPLIT purification chunk size, default `50000`
 - `--min-weight`: minimum RCTD weight for SPLIT post-processing, default `0.01`
+- `--device`: device passed to rctd-py, default `cuda:0`
 
 The script writes these files to `--out-dir`:
 
@@ -83,6 +85,7 @@ result = split.run_split_rctd_py_pipeline(
     spatial_path="/path/to/cell_feature_matrix.h5",
     out_dir="/path/to/split_outputs",
     cell_type_col="Annotation",
+  device="cuda:0",
 )
 
 purified = result["purified"]

@@ -160,6 +160,7 @@ def run_rctd_py(
     *,
     cell_type_col: str = "cell_type",
     mode: str = "doublet",
+    device: str = "cuda:0",
     class_df: Optional[dict | pd.DataFrame] = None,
     config=None,
     batch_size: Optional[int] = None,
@@ -171,16 +172,22 @@ def run_rctd_py(
     This is a thin wrapper around `rctd.Reference` and `rctd.run_rctd`.
     """
     Reference, run_rctd = _require_rctd_py()
+    RCTDConfig = _require_rctd_config()
     reference = Reference(reference_adata, cell_type_col=cell_type_col, **reference_kwargs)
 
     if config is None and class_df is not None:
-        RCTDConfig = _require_rctd_config()
         if RCTDConfig is not None:
             if isinstance(class_df, pd.DataFrame):
                 class_map = class_df["class"].to_dict()
             else:
                 class_map = dict(class_df)
             config = RCTDConfig(class_df=class_map)
+
+    if config is None and RCTDConfig is not None:
+        config = RCTDConfig()
+
+    if config is not None and hasattr(config, "_replace"):
+        config = config._replace(device=device)
 
     kwargs = {}
     if config is not None:
@@ -199,6 +206,7 @@ def run_rctd_py_and_split(
     *,
     cell_type_col: str = "cell_type",
     mode: str = "doublet",
+    device: str = "cuda:0",
     class_df: Optional[dict | pd.DataFrame] = None,
     min_weight: float = 0.01,
     purify_kwargs: Optional[dict] = None,
@@ -213,6 +221,7 @@ def run_rctd_py_and_split(
         reference_adata,
         cell_type_col=cell_type_col,
         mode=mode,
+        device=device,
         class_df=class_df,
         **rctd_kwargs,
     )

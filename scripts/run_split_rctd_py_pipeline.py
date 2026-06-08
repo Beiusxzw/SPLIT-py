@@ -48,6 +48,11 @@ def parse_args() -> argparse.Namespace:
         default=0.01,
         help="Minimum RCTD weight used during SPLIT post-processing.",
     )
+    parser.add_argument(
+        "--device",
+        default="cuda:0",
+        help="Device passed to rctd-py, default cuda:0.",
+    )
     return parser.parse_args()
 
 
@@ -62,6 +67,7 @@ def main() -> None:
         cell_type_col=args.cell_type_col,
         chunk_size=args.chunk_size,
         min_weight=args.min_weight,
+        device=args.device,
         log_fn=lambda message: print(message, flush=True),
     )
 
