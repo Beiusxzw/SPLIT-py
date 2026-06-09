@@ -92,6 +92,20 @@ purified = result["purified"]
 summary = result["summary"]
 ```
 
+Your may also use deconvolution result from methods other than rctd-py, as long as you can convert the output into the expected format for SPLIT purification. 
+
+```python
+import split
+
+result = split.rctd_free_purify(
+    st_adata,
+    deconvolution_weights_df,
+    reference_df
+)
+```
+
+where deconvolution_weights_df is a DataFrame with columns of cell types and rows of spatial barcodes, and reference_df is a DataFrame with columns of cell types and rows of genes.
+
 
 # References
 

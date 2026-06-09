@@ -3,14 +3,14 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "split-st"
+name = "split-py"
 version = "0.2.3"
 description = "Python/Scanpy implementation of SPLIT spatial transcript purification"
 readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "GPL-3.0-or-later" }
 authors = [
-  { name = "Mariia Bilous", email = "Mariia.Bilous@chuv.ch" }
+  { name = "Ziwei XUe", email = "xueziweisz@gmail.com"
 ]
 dependencies = [
   "anndata>=0.9",
